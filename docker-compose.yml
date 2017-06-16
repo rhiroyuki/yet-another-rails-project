@@ -14,3 +14,14 @@ services:
       - "3000:3000"
     depends_on:
       - db
+    links:
+      - db
+      - webpack
+
+  webpack:
+    build: .
+    command: ./bin/webpack-dev-server
+    volumes:
+      - .:/var/www/shadowing
+    ports:
+      - "8080:8080"
